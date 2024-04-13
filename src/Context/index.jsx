@@ -6,7 +6,7 @@ const StateContext = createContext()
 export const StateContextProvider = ({children}) => {
     const [weather, setWeather] = useState({})
     const [values, setValues] = useState([])
-    const [place, setPlace] = useState('')
+    const [place, setPlace] = useState('Jaipur')
     const [location, setLocation] = useState('')
 
 
@@ -19,10 +19,10 @@ export const StateContextProvider = ({children}) => {
                 location: place,
                 contentType: 'json',
                 unitGroup: 'metric',
-                shortColumnNames: '0'
+                shortColumnNames: 0,
               },
               headers: {
-                'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
+                'X-RapidAPI-Key' : import.meta.env.VITE_API_KEY,
                 'X-RapidAPI-Host': 'visual-crossing-weather.p.rapidapi.com'
               }
         }

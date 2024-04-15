@@ -2,9 +2,13 @@ import { useState } from 'react';
 import './App.css';
 import SearchIcon from './assets/icons/search_svg.svg';
 import BackgroundLayouts from './Components/BackgroundLayouts';
+import WeatherCard from './Components/WeatherCard';
+import MiniCard from './Components/MiniCard';
+import { useStateContext } from './Context';
 
 function App() {
   const [input, setInput] = useState('');
+  const { weather, thisLocaton, values } = useStateContext()
 
   const handleSubmit = () => {
     // Handle form submission here
@@ -30,6 +34,30 @@ function App() {
         </div>
       </nav>
       <BackgroundLayouts />
+      <main className=' w-full flex flex-wrap gap-8 py-4 px-[10%] items-center justify-center'>
+        <WeatherCard 
+         place={ thisLocaton}
+         windspeed={weather.windspeed}
+         humidity={weather.humidity}
+         temperature={weather.temp}
+         heatIndex={weather.heatIndex}
+         iconString={weather.conditions}
+         conditions={weather.conditions}
+        />
+
+        <div className=' flex justify-center gap-8 flex-wrap w-[60%]'>
+          {
+            values?.slice(1,7).map(curr => {
+              <MiniCard
+               key={curr.datetime}
+               time={curr.datetime}
+               temp={curr.temp}
+               iconString={curr.conditions}
+              />
+            })
+          }
+        </div>
+      </main>
     </div>
   );
 }

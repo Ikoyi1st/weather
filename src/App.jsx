@@ -8,11 +8,12 @@ import { useStateContext } from './Context';
 
 function App() {
   const [input, setInput] = useState('');
-  const { weather, thisLocaton, values } = useStateContext()
+  const { weather, thisLocation, values, place, setPlace } = useStateContext()
 
   const handleSubmit = () => {
     // Handle form submission here
-    console.log('Form submitted:', input);
+    setPlace(input)
+    setInput('')
   };
 
   return (
@@ -26,6 +27,7 @@ function App() {
               if (e.key === 'Enter') handleSubmit();
             }}
             type='text'
+            
             className='focus:outline-none w-full text-[#212121] text-lg'
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -36,8 +38,8 @@ function App() {
       <BackgroundLayouts />
       <main className=' w-full flex flex-wrap gap-8 py-4 px-[10%] items-center justify-center'>
         <WeatherCard 
-         place={ thisLocaton}
-         windspeed={weather.windspeed}
+         place={thisLocation}
+         windspeed={weather.wspd}
          humidity={weather.humidity}
          temperature={weather.temp}
          heatIndex={weather.heatIndex}
@@ -48,12 +50,14 @@ function App() {
         <div className=' flex justify-center gap-8 flex-wrap w-[60%]'>
           {
             values?.slice(1,7).map(curr => {
+             return (
               <MiniCard
-               key={curr.datetime}
-               time={curr.datetime}
-               temp={curr.temp}
-               iconString={curr.conditions}
-              />
+              key={curr.datetime}
+              time={curr.datetime}
+              temp={curr.temp}
+              iconString={curr.conditions}
+             />
+             )
             })
           }
         </div>

@@ -61,8 +61,6 @@ const WeatherCard = ({
         <p className=' flex-1 text-center p-2 font-bold rounded-lg bg-green-500'>Humidity <p className=' font-normal'>{humidity} gm/m&#179;</p></p>
       </div>
       <div className=' w-full p-3 mt-4 flex justify-between items-center'>
-        <p className=' font-semibold text-lg'>Heat Index</p>
-        <p className=' text-lg'>{heatIndex ? heatIndex : 'N/A'}</p>
       </div>
       <hr className=' bg-slate-500'/>
       <div className=' w-full p-4 flex justify-center items-center text-3xl font-semibold'>

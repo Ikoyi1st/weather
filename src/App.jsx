@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './App.css';
 import SearchIcon from './assets/icons/search_svg.svg';
-import BackgroundLayouts from './Components/BackgroundLayouts';
-import WeatherCard from './Components/WeatherCard';
-import MiniCard from './Components/MiniCard';
+import BackgroundLayouts from './Component/BackgroundLayouts';
+import WeatherCard from './Component/WeatherCard';
+import MiniCard from './Component/MiniCard';
 import { useStateContext } from './Context';
 
 function App() {

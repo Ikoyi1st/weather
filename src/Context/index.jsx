@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const StateContext = createContext()
 
+// eslint-disable-next-line react/prop-types
 export const StateContextProvider = ({children}) => {
     const [weather, setWeather] = useState({})
     const [values, setValues] = useState([])
@@ -29,7 +30,6 @@ export const StateContextProvider = ({children}) => {
 
         try{
             const response = await axios.request(options);
-            console.log(response.data)
             const thisData = Object.values(response.data.locations)[0]
             setLocation(thisData.address)
             setValues(thisData.values)
@@ -48,9 +48,6 @@ export const StateContextProvider = ({children}) => {
 
     },[place])
 
-    useEffect(() => {
-        console.log(values)
-    },[values])
 
     return (
         <StateContext.Provider value={{

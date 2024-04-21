@@ -8,7 +8,7 @@ import { useStateContext } from './Context';
 
 function App() {
   const [input, setInput] = useState('');
-  const { weather, thisLocation, values, place, setPlace } = useStateContext()
+  const { weather, thisLocation, values, setPlace } = useStateContext()
 
   const handleSubmit = () => {
     // Handle form submission here
